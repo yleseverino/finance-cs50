@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <label for="username">Username</label>
+        <div class="form-group">
+            <input autocomplete="off" pattern="([A-z0-9À-ž]){2,}" autofocus id="username" required class="form-control" required name="username" placeholder="Bob" type="text">
+        </div>
+        <label for="password">Password</label>
+        <div class="form-group">
+            <input class="form-control" name="password" required id="password" required type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+{% endblock %}

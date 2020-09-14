@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["name"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["Timestamp"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+      <img src="/static/plot.svg" alt="Chart" height="400">
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {% if not quote %}
+    
+        <form action="/quote" method="post">
+            <div class="form-group">
+                <input  
+                    autofocus id="quote" 
+                    class="form-control" 
+                    required 
+                    name="quote" 
+                    style="text-transform: uppercase;" 
+                    placeholder="AAPL" 
+                    type="text"
+                >
+            </div>
+            <button class="btn btn-primary" type="submit">Quote</button>
+        </form>
+    
+
+    {% else %}
+            A share of {{ name }} ({{ symbol }}) cost ${{ quote }} 💸
+    {% endif %}
+
+    {% if noneresp %}
+        <br>
+        <div id="alert" class="alert alert-danger" role="alert">{{ noneresp }} 😭</div>
+    {% endif %}
+
+
+{% endblock %}

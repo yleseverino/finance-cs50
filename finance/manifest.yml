@@ -1,0 +1,5 @@
+---
+applications:
+ - name: CS50-finance-yle
+   random-route: true
+   memory: 256M

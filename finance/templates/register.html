@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+
+        <label for="username">Username</label>
+        <div class="form-group">
+            <input 
+                autocomplete="off" 
+                autofocus 
+                class="form-control" 
+                name="username" 
+                id="username" 
+                required 
+                placeholder="Bob" 
+                type="text"
+                pattern="([A-z0-9À-ž]){2,}"
+            >
+        </div>
+
+        <label for="password">Password</label>
+        <div class="form-group">           
+            <input 
+                class="form-control" 
+                name="password" 
+                required
+                onkeyup="myFunction()"
+                id="password" 
+                type="password"
+            >
+        </div>
+
+        <label for="cpassword">Confirm Password</label>
+        <div class="form-group">           
+            <input 
+                class="form-control" 
+                onkeyup="myFunction()" 
+                name="cpassword" 
+                id="cpassword" 
+                required 
+                autocomplete="off" 
+                type="password"
+            >
+        </div>
+
+        <div id="alert" hidden class="alert alert-danger" role="alert">The two passwords do not match!</div>
+        <div id="warning" hidden class="alert alert-warning" role="alert">Weak password!</div>
+
+        <button id="submit" class="btn btn-primary" disabled type="submit">Sing in</button>
+    </form>
+
+    <script>
+
+        function myFunction() {
+
+            if (document.querySelector("#password").value === document.querySelector("#cpassword").value) {
+                document.querySelector("#submit").disabled = false;
+                document.querySelector("#alert").hidden = true;
+
+            } else {
+
+                
+                document.querySelector("#submit").disabled = true;
+                document.querySelector("#alert").hidden = false;
+
+                (document.querySelector("#password").value.length < 8) ? document.querySelector("#warning").hidden = false : document.querySelector("#warning").hidden = true;
+            }
+
+        }
+    </script>
+{% endblock %}

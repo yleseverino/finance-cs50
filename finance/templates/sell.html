@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    
+        <form action="/sell" method="post">
+            <label for="sell">Name of the stock</label>
+            <div class="form-group">             
+                <input  
+                    autofocus id="sell" 
+                    class="form-control" 
+                    required 
+                    name="sell" 
+                    style="text-transform: uppercase;" 
+                    placeholder="AAPL" 
+                    type="text"
+                    pattern="([A-z0-9À-ž]){2,}"
+                >
+            </div>
+            <label for="number">Number</label>
+            <div class="form-group">               
+                <input  
+                    autofocus id="number" 
+                    class="form-control" 
+                    required 
+                    name="number" 
+                    style="text-transform: uppercase;" 
+                    placeholder="3" 
+                    type="number"
+                    min="0"
+                >
+            </div>
+            <button class="btn btn-primary" type="submit">Sell</button>
+        </form>
+    
+
+    {% if noneresp %}
+        <br>
+        <div id="alert" class="alert alert-danger" role="alert">{{ noneresp }} 😭</div>
+    {% endif %}
+
+
+{% endblock %}
